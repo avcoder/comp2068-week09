@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO -->
+  <title>WebSlides: Making HTML presentations easy</title>
+  <meta name="description" content="WebSlides is the easiest way to make HTML presentations, portfolios, and landings. Just essential features.">
+
+  <!-- URL CANONICAL -->
+  <!-- <link rel="canonical" href="http://your-url.com/"> -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext"
+    rel="stylesheet">
+
+  <!-- CSS WebSlides -->
+  <link rel="stylesheet" type='text/css' media='all' href="././static/css/webslides.css">
+
+  <!-- Optional - CSS SVG Icons (Font Awesome) -->
+  <link rel="stylesheet" type='text/css' media='all' href="./static/css/svg-icons.css">
+
+  <!-- SOCIAL CARDS (ADD YOUR INFO) -->
+
+  <!-- FACEBOOK -->
+  <meta property="og:url" content="http://your-url.com/">
+  <!-- YOUR URL -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="WebSlides — Making HTML Presentations Easy">
+  <!-- EDIT -->
+  <meta property="og:description" content="WebSlides is about telling stories beautifully. Just the essential features. Good karma.">
+  <!-- EDIT -->
+  <meta property="og:updated_time" content="2017-01-04T17:20:50">
+  <!-- EDIT -->
+  <meta property="og:image" content="./static/images/share-webslides.jpg">
+  <!-- EDIT -->
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@webslides">
+  <!-- EDIT -->
+  <meta name="twitter:creator" content="@jlantunez">
+  <!-- EDIT -->
+  <meta name="twitter:title" content="WebSlides — Making HTML Presentations Easy">
+  <!-- EDIT -->
+  <meta name="twitter:description" content="WebSlides is about good karma. Just essential features. 120+ free slides ready to use.">
+  <!-- EDIT -->
+  <meta name="twitter:image" content="./static/images/share-webslides.jpg">
+  <!-- EDIT -->
+
+  <!-- FAVICONS -->
+  <link rel="shortcut icon" sizes="16x16" href="./static/images/favicons/favicon.png">
+  <link rel="shortcut icon" sizes="32x32" href="./static/images/favicons/favicon-32.png">
+  <link rel="apple-touch-icon icon" sizes="76x76" href="./static/images/favicons/favicon-76.png">
+  <link rel="apple-touch-icon icon" sizes="120x120" href="./static/images/favicons/favicon-120.png">
+  <link rel="apple-touch-icon icon" sizes="152x152" href="./static/images/favicons/favicon-152.png">
+  <link rel="apple-touch-icon icon" sizes="180x180" href="./static/images/favicons/favicon-180.png">
+  <link rel="apple-touch-icon icon" sizes="192x192" href="./static/images/favicons/favicon-192.png">
+
+  <!-- Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#333333">
+  <style>
+    input[type=range] {
+      -webkit-appearance: none;
+      background: #333;
+      border: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border: none;
+      height: 16px;
+      width: 120px;
+      background: lime;
+      margin-top: -4px;
+    }
+
+    input[type=range]::-moz-range-thumb {
+      border: none;
+      height: 16px;
+      width: 120px;
+      background: lime;
+      margin-top: -4px;
+      border-radius: 0;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+</head>
+
+<body>
+  <header role="banner">
+    <nav role="navigation">
+      <p class="logo">
+        <a href="index.html" title="WebSlides">WebSlides</a>
+      </p>
+      <ul>
+        <li class="github">
+          <a rel="external" href="https://github.com/avcoder/comp2068-week04" title="Github">
+            <svg class="fa-github">
+              <use xlink:href="#fa-github"></use>
+            </svg>
+            <em>WebSlides</em>
+          </a>
+        </li>
+        <li class="twitter">
+          <a rel="external" href="https://twitter.com/webslides" title="Twitter">
+            <svg class="fa-twitter">
+              <use xlink:href="#fa-twitter"></use>
+            </svg>
+            <em>@WebSlides</em>
+          </a>
+        </li>
+        <!--  <li class="dribbble"><a rel="external" href="http://dribbble.com/webslides" title="Dribbble"><svg class="fa-dribbble"><use xlink:href="#fa-dribbble"></use></svg> <em>webslides</em></a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+  <main role="main">
+    <article id="webslides" class="horizontal">
+      <!-- Quick Guide
+          - Each parent <section> in the <article id="webslides"> element is an individual slide.
+          - Vertical sliding = <article id="webslides" class="vertical">
+          - <div class="wrap"> = container 90% / <div class="wrap size-50"> = 45%;
+        -->
+
+
+      <section class="bg-primary">
+        <!-- Credit: image from unsplash.com -->
+        <span class="background" style="background-image:url('././static/images/splash.jpg'); filter: opacity(.1);"></span>
+        <!--.wrap = container (width: 90%) -->
+        <div class="wrap aligncenter">
+          <h1>
+            <strong>Authentication pt 2</strong>
+          </h1>
+          <p class="text-intro">Week 9
+            <br/>COMP 2068
+          </p>
+          <p>
+            <a href="https://github.com/avcoder/comp2068-week04" class="button zoomIn" title="Download WebSlides for free">
+              <svg class="fa-github">
+                <use xlink:href="#fa-github"></use>
+              </svg>
+              Class Notes
+            </a>
+          </p>
+        </div>
+        <!-- .end .wrap -->
+      </section>
+
+
+      <section class="">
+        <!--.wrap = container (width: 90%) -->
+        <div class="wrap size-50 aligncenter">
+          <h2>
+            <strong>To Do Today:</strong>
+          </h2>
+          <br />
+          <div class="bg-white shadow">
+            <ul class="flexblock reasons">
+              <li>
+                <h2>
+                  Facebook authentication
+                </h2>
+              </li>
+              <li>
+                <h2>
+                  Google authentication
+                </h2>
+              </li>
+            </ul>
+          </div>
+          <!-- .end .bg-white shadow -->
+        </div>
+        <!-- .end .wrap -->
+      </section>
+
+
+
+
+
+
+      <section>
+        <!-- .wrap = container (width: 90%) -->
+        <div class=" wrap ">
+          <h2 class="alignleft ">
+            <strong>References</strong>
+          </h2>
+        </div>
+        <ol>
+
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+
+        <!-- .end .wrap -->
+      </section>
+
+    </article>
+    <!-- end article -->
+  </main>
+  <!-- end main -->
+
+  <!-- A global footer
+
+     <footer role="contentinfo ">
+      <div class="wrap ">
+        <p>An <a href="https://github.com/webslides/webslides ">open source solution</a>, by <a href="https://twitter.com/webslides ">@webslides</a>.</p>
+      </div>
+    </footer>  -->
+
+  <!-- Required -->
+  <script src="././static/js/webslides.js "></script>
+  <script>
+    window.ws = new WebSlides();
+  </script>
+
+  <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
+  <script defer src="././static/js/svg-icons.js "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js "></script>
+
+</body>
+
+</html>
