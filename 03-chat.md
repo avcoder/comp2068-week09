@@ -58,7 +58,7 @@ We have to code client side.
 
 ## Client side
 
-1.  In index.ejs (or see blackboard under week 9 for html code below)
+1.  In views/index.ejs (or see blackboard under week 9 for html code below)
 
     ```html
     <!DOCTYPE html>
