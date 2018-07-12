@@ -231,5 +231,6 @@ Try chatting now.
 # Challenges:
 - Make username work
 - Make it so if user presses the 'Enter' key, it sends the message and/or username
+- Make it public (via localtunnel, or azure/heroku, or now.sh)
 
 Answer: See 
