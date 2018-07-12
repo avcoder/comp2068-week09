@@ -123,74 +123,113 @@ We have to code client side.
 So when the client loads the page, it will automatically connect and so create a new socket
 and in terminal you should see 'New user connected' -- Try it out!
 
-## Username
-
-- When a user connects to our app, we'll assign 'anonymous' if no username given
-- To do that, we have to go on the server and add some key/property to the socket
-
-1.  Change index.js on server side to:
-
+## Exercise
+1. In browser's console do we have access to socket?  Yes
+1. In console, type: `socket.emit('a123', { message: 'Albert on Chrome says hi' })` -- does server respond yet? No
+1. Change index.js:
     ```js
-    /* listen on every connection */
-    io.on('connection', socket => {
-      console.log('New user connected');
+    io.on('connection', (socket) => {
+        console.log('New user connected');
 
-      /* default username */
-      socket.username = 'Anonymous';
+        socket.on('a123', (data) => {
+            console.log('We got a new message');
+            console.log(data);
+        });
+    });
+    ```
 
-      /* We also will listen to any call made in « change_username. 
-      If a message is sent to this event, the username will be changed. */
-      socket.on('change_username', data => {
-        socket.username = data.username;
-      });
+    Run it and see message in terminal.  Then change index.js to better flag and better logging
+    ```js
+    io.on('connection', (socket) => {
+        console.log('New user connected');
 
-      /* listen on new message */
-      socket.on('new_message', data => {
+        socket.on('new_message', (data) => {
+            console.log('We got a new message');
+            console.log(data.message);
+        });
+    });
+    ```
+1. In console, type: `socket.emit('new_message', { message: 'Albert on Chrome says hi' })`
+
+    Q. How does server push message to all clients?
+    A. Server emits or broadcasts to everyone via io.socket.emit
+
+1. Change index.js:
+    ```js
+    /* listen on new message */
+    socket.on('new_message', data => {
         console.log('I heard we got a new message');
-        console.log(data);
+        console.log(data.message);
 
         /* broadcast the new message */
         io.sockets.emit('new_message', {
-          message: data.message,
-          username: socket.username
+            message: data.message,
         });
-      });
     });
     ```
 
-- On the client side, the goal is to do the opposite
-- Each time the button change username is clicked, the client will send an event with the new value
+Try emitting a message from within Chrome's console, and Firefox console should also see the message
 
-1.  In index.ejs in script part:
+## Try displaying message
+Tips: (Add CSS overflow-y: scroll; Add js chatroom.scrollTop = chatroomm.scrollHeight)
 
+1. Change chat.js:
     ```js
-    /* make connection */
     const socket = io.connect('http://localhost:3000');
 
     /* buttons and inputs */
-    const message = document.getElementById('message');
-    const username = document.getElementById('username');
-    const sendMessage = document.getElementById('send_message');
-    const sendUsername = document.getElementById('send_username');
     const chatroom = document.getElementById('chatroom');
+
+    /* listen on new_message */
+    socket.on('new_message', (data) => {
+        console.log(data);
+        chatroom.insertAdjacentHTML(
+            'beforeend',
+            `<p>${data.message}</p>`,
+        );
+
+        /* keep focus scrolled to bottom for new chats */
+        chatroom.scrollTop = chatroom.scrollHeight;
+    });
+    ```
+## Try obtaining value of message from textbox upon clicking Send
+1. Change chat.js:
+    ```js
+    const socket = io.connect('http://localhost:3000');
+
+    /* buttons and inputs */
+    const chatroom = document.getElementById('chatroom');
+    const message = document.getElementById('message');
+    const sendMessage = document.getElementById('send_message');
+
+    /* listen on new_message */
+    socket.on('new_message', (data) => {
+        console.log(data);
+        chatroom.insertAdjacentHTML(
+            'beforeend',
+            `<p>${data.message}</p>`,
+        );
+
+        /* keep focus scrolled to bottom for new chats */
+        chatroom.scrollTop = chatroom.scrollHeight;
+    });
 
     /* Emit message */
     sendMessage.addEventListener('click', () => {
-      socket.emit('new_message', { message: message.value });
-    });
-
-    /* listen on new_message */
-    socket.on('new_message', data => {
-      console.log(data);
-      chatroom.insertAdjacentHTML(
-        'beforeend',
-        `<p>${data.username}: ${data.message}</p>`
-      );
-    });
-
-    /* Emit a username */
-    sendUsername.addEventListener('click', () => {
-      console.log(username.textContent);
-      socket.emit('change_username', { username: username.value });
+        socket.emit('new_message', { message: message.value });
     });
     ```
+
+Try chatting now. 
+
+### Fix: clear box after submitting
+1. Change chat.js:
+    ```js
+    message.value = '';
+    ```
+
+# Challenges:
+- Make username work
+- Make it so if user presses the 'Enter' key, it sends the message and/or username
+
+Answer: See 
